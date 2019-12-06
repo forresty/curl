@@ -2853,16 +2853,16 @@ static CURLcode ossl_connect_step1(struct connectdata *conn, int sockindex)
   SSL_set_connect_state(BACKEND->handle);
 
   BACKEND->server_cert = 0x0;
-#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
-  if((0 == Curl_inet_pton(AF_INET, hostname, &addr)) &&
-#ifdef ENABLE_IPV6
-     (0 == Curl_inet_pton(AF_INET6, hostname, &addr)) &&
-#endif
-     sni &&
-     !SSL_set_tlsext_host_name(BACKEND->handle, hostname))
-    infof(data, "WARNING: failed to configure server name indication (SNI) "
-          "TLS extension\n");
-#endif
+// #ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
+//   if((0 == Curl_inet_pton(AF_INET, hostname, &addr)) &&
+// #ifdef ENABLE_IPV6
+//      (0 == Curl_inet_pton(AF_INET6, hostname, &addr)) &&
+// #endif
+//      sni &&
+//      !SSL_set_tlsext_host_name(BACKEND->handle, hostname))
+//     infof(data, "WARNING: failed to configure server name indication (SNI) "
+//           "TLS extension\n");
+// #endif
 
   /* Check if there's a cached ID we can/should use here! */
   if(SSL_SET_OPTION(primary.sessionid)) {
